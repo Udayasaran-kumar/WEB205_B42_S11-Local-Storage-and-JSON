@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save and Load User Notes</title>
+</head>
+<body>
+    <textarea name="" id="textarea" placeholder=""></textarea>
+    <button id="submit">submit</button>
+    <button id="load">Load Notes</button>
+    <button id="clear">Clear Notes</button>
+
+</body>
+</html>
+
+<script>
+    let value=document.querySelector("#textarea");
+    let submit=document.querySelector("#submit");
+    let i=0;
+    submit.addEventListener("click",()=>{
+        let notes=value.value.trim();
+        localStorage.setItem("Notes",notes);
+    });
+    let load=document.querySelector("#load");
+    load.addEventListener('click',()=>{
+        let find=localStorage.getItem("Notes");
+        value.value=find;
+    });
+    let clear=document.querySelector("#clear");
+    clear.addEventListener('click',()=>{
+        localStorage.clear();
+    })
+</script>
