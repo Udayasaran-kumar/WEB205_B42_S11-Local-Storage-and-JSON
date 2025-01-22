@@ -19,16 +19,16 @@
     let submit=document.querySelector("#submit");
     let i=0;
     submit.addEventListener("click",()=>{
-        let notes=value.value.trim();
-        localStorage.setItem("Notes",notes);
+        let notes=value.value.trim();//value is stored in a variable
+        localStorage.setItem("Notes",notes);// stored value is added to local storage
     });
     let load=document.querySelector("#load");
     load.addEventListener('click',()=>{
-        let find=localStorage.getItem("Notes");
-        value.value=find;
+        let find=localStorage.getItem("Notes");//notes stored in local storage is assigned to a variable.
+        value.value=find;//assigned value is placed inside the text area
     });
     let clear=document.querySelector("#clear");
     clear.addEventListener('click',()=>{
-        localStorage.clear();
+        // localStorage.clear();//made to clear the stored notes if present
     })
 </script>
