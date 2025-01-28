@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Selector</title>
+  <style>
+       .light-theme {
+      background-color: white;
+      color: black;
+    }
+    .dark-theme {
+      background-color: black;
+      color: white;
+    }
+    .blue-theme {
+      background-color: #007BFF;
+      color: white;
+    }
+    .theme-selector {
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="theme-selector">
+    <label for="theme">Choose a theme:</label>
+    <select id="theme">
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="blue">Blue</option>
+    </select>
+  </div>
+
+  <script>
+     
+       function applyTheme(theme) {//after invoking the function the value of theme or color selected is assigned and set as item in session storage for later usage.
+      document.body.className = `${theme}-theme`;
+      sessionStorage.setItem('selectedTheme', theme);
+    }
+
+       let  savedTheme = sessionStorage.getItem('selectedTheme') || 'light';//if the page is closed and reopened the data stored in session storage is retrieved and assigned and then applied to the page.
+      document.body.className = `${savedTheme}-theme`;
+        let themeDropdown = document.getElementById('theme');
+        themeDropdown.value = savedTheme;
+    themeDropdown.addEventListener('change', (event) => {//an event listener is added to monitor and update the color or theme chosen by user
+      let selectedTheme = event.target.value;
+      applyTheme(selectedTheme);//a function to apply theme is invoked
+    });
+    
+  </script>
+</body>
+</html>
